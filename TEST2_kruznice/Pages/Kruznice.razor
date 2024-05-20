@@ -1,0 +1,22 @@
+﻿<h1>Kružnice</h1>
+
+<label>Počet kružnic: <input type="number" @bind-value="Kruh.PosunStredy.Pocet"/></label>
+<label>Poloměr kružnice: <input type="number" @bind-value="Kruh.PosunStredy.Polomer" /></label>
+<label>Vzdálenost kružnic od středu: <input type="number" @bind-value="Kruh.PosunStredy.Vzdalenost" /></label>
+<br />
+<button class="btn btn-info" @onclick="Kruh.PridejKruznice">Vygenerování kružnic</button>
+<button class="btn btn-warning" @onclick="Kruh.SmazatIndex">Smazání kružnice - index</button>
+<button class="btn btn-primary" @onclick="Kruh.SmazatVse">Smazání všech kružnic</button>
+<br />
+<label>Index Kružnice: <input type="number" @bind-value="Kruh.PosunStredy.IndexMazani"/></label>
+
+<svg height="800" width="800" xmlns="http://www.w3.org/2000/svg">
+    @foreach (var item in Kruh.KruzniceList)
+    {
+        <circle r="@item.Polomer" cx="@item.PozX" cy="@item.PozY" fill="transparent" stroke="red" stroke-width="2" />
+    }
+</svg>
+
+@code {
+    private Models.Kruhy Kruh = new Models.Kruhy();
+}
